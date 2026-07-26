@@ -1164,8 +1164,7 @@ function CatalogComplianceCheckerInner() {
 
         <div className="mt-16 pt-6 border-t border-slate-800 text-xs text-slate-600 leading-relaxed">
           Runs entirely in your browser — no catalog data is uploaded
-          anywhere. Cross-system checks against a live source (Hansen EPC,
-          Amdocs, BRM) aren't in this build; they'd need a backend connector.
+          anywhere.
           <div className="mt-2">
             <a
               href="https://www.tmforum.org/open-digital-architecture/open-apis/product-catalog-management-api-TMF620/"
