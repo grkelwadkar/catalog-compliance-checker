@@ -2,7 +2,30 @@
 
 A browser-only TMF620 product catalog auditor. Upload a JSON/CSV/XLSX
 catalog export and get a severity-ranked compliance report — no data
-leaves the browser.
+leaves the browser. No sample data, either: nothing is sent to a server,
+so there's nothing to try if you don't have a real file handy — use the
+built-in "Try the sample catalog" link on the upload screen, which loads
+a deliberately imperfect demo catalog exercising every rule below.
+
+## Tech stack
+
+- **React 18 + Vite 7** — no backend, builds to static assets
+- **Tailwind CSS** for styling
+- **PapaParse** (CSV) and **xlsx (SheetJS)** for spreadsheet parsing
+- **jsPDF + jspdf-autotable** for the PDF export
+- **lucide-react** for icons
+
+All parsing, validation, and report generation happens client-side in
+[src/App.jsx](src/App.jsx).
+
+## How scoring works
+
+Each entity contributes a fixed number of checks; every non-info issue
+found (`critical` or `warning`) counts against the total. The compliance
+score is `100 - (issues / total checks) * 100 * 4`, clamped to `0–100`.
+`info`-level findings (unused specs/prices/categories, duplicate names,
+uncategorized offerings) are surfaced in the report but don't affect the
+score.
 
 ## What it checks
 
